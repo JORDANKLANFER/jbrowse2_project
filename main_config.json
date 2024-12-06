@@ -78,14 +78,6 @@
   "defaultSession": {
     "name": "New Session"
   },
-  
-    "plugins": [
-      {
-        "name": "MultilevelLinearView",
-        "url": "./plugins/jbrowse-plugin-multilevel-linear-view.umd.production.min.js"
-      }
-    ]
-  ,
   "tracks": [
     {
       "type": "FeatureTrack",
@@ -150,66 +142,6 @@
         }
       },
       "assemblyNames": [
-        "SIV_Reference_Genome"
-      ]
-    },
-    {
-      "type": "SyntenyTrack",
-      "trackId": "hiv1_hiv2",
-      "name": "HIV1_HIV2_Synteny",
-      "adapter": {
-        "type": "PAFAdapter",
-        "pafLocation": {
-          "uri": "data/synteny_data/hiv1_hiv2.paf",
-          "locationType": "UriLocation"
-        },
-        "assemblyNames": [
-          "HIV-1_Reference_Genome",
-          "HIV-2_Reference_Genome"
-        ]
-      },
-      "assemblyNames": [
-        "HIV-1_Reference_Genome",
-        "HIV-2_Reference_Genome"
-      ]
-    },
-    {
-      "type": "SyntenyTrack",
-      "trackId": "hiv1_siv",
-      "name": "HIV1_SIV_Synteny",
-      "adapter": {
-        "type": "PAFAdapter",
-        "pafLocation": {
-          "uri": "data/synteny_data/hiv1_siv.paf",
-          "locationType": "UriLocation"
-        },
-        "assemblyNames": [
-          "HIV-1_Reference_Genome",
-          "SIV_Reference_Genome"
-        ]
-      },
-      "assemblyNames": [
-        "HIV-1_Reference_Genome",
-        "SIV_Reference_Genome"
-      ]
-    },
-    {
-      "type": "SyntenyTrack",
-      "trackId": "hiv2_siv",
-      "name": "HIV2_SIV_Synteny",
-      "adapter": {
-        "type": "PAFAdapter",
-        "pafLocation": {
-          "uri": "data/synteny_data/hiv2_siv.paf",
-          "locationType": "UriLocation"
-        },
-        "assemblyNames": [
-          "HIV-2_Reference_Genome",
-          "SIV_Reference_Genome"
-        ]
-      },
-      "assemblyNames": [
-        "HIV-2_Reference_Genome",
         "SIV_Reference_Genome"
       ]
     }
