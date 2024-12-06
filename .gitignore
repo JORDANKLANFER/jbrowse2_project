@@ -18,6 +18,6 @@ yalc.lock
 .yarn
 .yarnrc
 *.tsbuildinfo
-jbrowse2/data/
-jbrowse2/test_data/
-jbrowse2/trix/
+data/
+test_data/
+trix/
