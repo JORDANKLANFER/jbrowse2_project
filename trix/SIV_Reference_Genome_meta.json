@@ -1,0 +1,33 @@
+{
+  "dateCreated": "2024-12-06T14:26:17.186Z",
+  "tracks": [
+    {
+      "trackId": "siv_sorted_annotations.gff",
+      "attributesIndexed": [
+        "Name",
+        "ID"
+      ],
+      "excludedTypes": [
+        "CDS",
+        "exon"
+      ],
+      "adapterConf": {
+        "type": "Gff3TabixAdapter",
+        "gffGzLocation": {
+          "uri": "data/siv_data/siv_sorted_annotations.gff.gz",
+          "locationType": "UriLocation"
+        },
+        "index": {
+          "location": {
+            "uri": "data/siv_data/siv_sorted_annotations.gff.gz.tbi",
+            "locationType": "UriLocation"
+          },
+          "indexType": "TBI"
+        }
+      }
+    }
+  ],
+  "assemblyNames": [
+    "SIV_Reference_Genome"
+  ]
+}
