@@ -1,0 +1,24 @@
+{
+  "name": "jbrowse2_project",
+  "version": "1.0.0",
+  "main": "umd_plugin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JORDANKLANFER/jbrowse2_project.git"
+  },
+  "author": "Jordan Klanfer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JORDANKLANFER/jbrowse2_project/issues"
+  },
+  "homepage": "https://github.com/JORDANKLANFER/jbrowse2_project#readme",
+  "description": "",
+  "dependencies": {
+    "@jbrowse/core": "^2.17.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

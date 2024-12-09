@@ -1,36 +1,36 @@
 {
   "assemblies": [
     {
-      "name": "HIV-1_Reference_Genome",
+      "name": "HIV1_Reference_Genome",
       "sequence": {
         "type": "ReferenceSequenceTrack",
-        "trackId": "hiv1_genome.fna-ReferenceSequenceTrack",
+        "trackId": "HIV1_Assembly-ReferenceSequenceTrack",
         "adapter": {
           "type": "IndexedFastaAdapter",
           "fastaLocation": {
-            "uri": "data/hiv1_data/hiv1_genome.fna",
+            "uri": "./data/hiv1_data/hiv1_genome.fna",
             "locationType": "UriLocation"
           },
           "faiLocation": {
-            "uri": "data/hiv1_data/hiv1_genome.fna.fai",
+            "uri": "./data/hiv1_data/hiv1_genome.fna.fai",
             "locationType": "UriLocation"
           }
         }
       }
     },
     {
-      "name": "HIV-2_Reference_Genome",
+      "name": "HIV2_Reference_Genome",
       "sequence": {
         "type": "ReferenceSequenceTrack",
-        "trackId": "hiv2_genome.fna-ReferenceSequenceTrack",
+        "trackId": "HIV2_Assembly-ReferenceSequenceTrack",
         "adapter": {
           "type": "IndexedFastaAdapter",
           "fastaLocation": {
-            "uri": "data/hiv2_data/hiv2_genome.fna",
+            "uri": "./data/hiv2_data/hiv2_genome.fna",
             "locationType": "UriLocation"
           },
           "faiLocation": {
-            "uri": "data/hiv2_data/hiv2_genome.fna.fai",
+            "uri": "./data/hiv2_data/hiv2_genome.fna.fai",
             "locationType": "UriLocation"
           }
         }
@@ -40,33 +40,195 @@
       "name": "SIV_Reference_Genome",
       "sequence": {
         "type": "ReferenceSequenceTrack",
-        "trackId": "siv_genome.fna-ReferenceSequenceTrack",
+        "trackId": "SIV_Assembly-ReferenceSequenceTrack",
         "adapter": {
           "type": "IndexedFastaAdapter",
           "fastaLocation": {
-            "uri": "data/siv_data/siv_genome.fna",
+            "uri": "./data/siv_data/siv_genome.fna",
             "locationType": "UriLocation"
           },
           "faiLocation": {
-            "uri": "data/siv_data/siv_genome.fna.fai",
+            "uri": "./data/siv_data/siv_genome.fna.fai",
             "locationType": "UriLocation"
           }
         }
       }
     },
     {
-      "name": "hiv1_genome.fna",
+      "name": "HIV1_M_B_GagPol_Protein",
       "sequence": {
         "type": "ReferenceSequenceTrack",
-        "trackId": "hiv1_genome.fna-ReferenceSequenceTrack",
+        "trackId": "HIV1_M_B_GagPol_Protein-ReferenceSequenceTrack",
         "adapter": {
           "type": "IndexedFastaAdapter",
           "fastaLocation": {
-            "uri": "data/hiv1_data/hiv1_genome.fna",
+            "uri": "./data/gag_pol/HIV1_M_B_gag_pol.fasta",
             "locationType": "UriLocation"
           },
           "faiLocation": {
-            "uri": "data/hiv1_data/hiv1_genome.fna.fai",
+            "uri": "./data/gag_pol/HIV1_M_B_gag_pol.fasta.fai",
+            "locationType": "UriLocation"
+          }
+        }
+      }
+    },
+    {
+      "name": "HIV1_M_C_GagPol_Protein",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "HIV1_M_C_GagPol_Protein-ReferenceSequenceTrack",
+        "adapter": {
+          "type": "IndexedFastaAdapter",
+          "fastaLocation": {
+            "uri": "./data/gag_pol/HIV1_M_C_gag_pol.fasta",
+            "locationType": "UriLocation"
+          },
+          "faiLocation": {
+            "uri": "./data/gag_pol/HIV1_M_C_gag_pol.fasta.fai",
+            "locationType": "UriLocation"
+          }
+        }
+      }
+    },
+    {
+      "name": "HIV2_A_GagPol_Protein",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "HIV2_A_GagPol_Protein-ReferenceSequenceTrack",
+        "adapter": {
+          "type": "IndexedFastaAdapter",
+          "fastaLocation": {
+            "uri": "./data/gag_pol/HIV2_A_gag_pol.fasta",
+            "locationType": "UriLocation"
+          },
+          "faiLocation": {
+            "uri": "./data/gag_pol/HIV2_A_gag_pol.fasta.fai",
+            "locationType": "UriLocation"
+          }
+        }
+      }
+    },
+    {
+      "name": "HIV2_B_GagPol_Protein",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "HIV2_B_GagPol_Protein-ReferenceSequenceTrack",
+        "adapter": {
+          "type": "IndexedFastaAdapter",
+          "fastaLocation": {
+            "uri": "./data/gag_pol/HIV2_B_gag_pol.fasta",
+            "locationType": "UriLocation"
+          },
+          "faiLocation": {
+            "uri": "./data/gag_pol/HIV2_B_gag_pol.fasta.fai",
+            "locationType": "UriLocation"
+          }
+        }
+      }
+    },
+    {
+      "name": "SIV_cpz_GagPol_Protein",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "SIV_cpz_GagPol_Protein-ReferenceSequenceTrack",
+        "adapter": {
+          "type": "IndexedFastaAdapter",
+          "fastaLocation": {
+            "uri": "./data/gag_pol/SIV_cpz_gag_pol.fasta",
+            "locationType": "UriLocation"
+          },
+          "faiLocation": {
+            "uri": "./data/gag_pol/SIV_cpz_gag_pol.fasta.fai",
+            "locationType": "UriLocation"
+          }
+        }
+      }
+    },
+    {
+      "name": "HIV1_M_B_Env_Protein",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "HIV1_M_B_Env_Protein-ReferenceSequenceTrack",
+        "adapter": {
+          "type": "IndexedFastaAdapter",
+          "fastaLocation": {
+            "uri": "./data/env/HIV1_M_B_env.fasta",
+            "locationType": "UriLocation"
+          },
+          "faiLocation": {
+            "uri": "./data/env/HIV1_M_B_env.fasta.fai",
+            "locationType": "UriLocation"
+          }
+        }
+      }
+    },
+    {
+      "name": "HIV1_M_C_Env_Protein",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "HIV1_M_C_Env_Protein-ReferenceSequenceTrack",
+        "adapter": {
+          "type": "IndexedFastaAdapter",
+          "fastaLocation": {
+            "uri": "./data/env/HIV1_M_C_env.fasta",
+            "locationType": "UriLocation"
+          },
+          "faiLocation": {
+            "uri": "./data/env/HIV1_M_C_env.fasta.fai",
+            "locationType": "UriLocation"
+          }
+        }
+      }
+    },
+    {
+      "name": "HIV2_A_Env_Protein",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "HIV2_A_Env_Protein-ReferenceSequenceTrack",
+        "adapter": {
+          "type": "IndexedFastaAdapter",
+          "fastaLocation": {
+            "uri": "./data/env/HIV2_A_env.fasta",
+            "locationType": "UriLocation"
+          },
+          "faiLocation": {
+            "uri": "./data/env/HIV2_A_env.fasta.fai",
+            "locationType": "UriLocation"
+          }
+        }
+      }
+    },
+    {
+      "name": "HIV2_B_Env_Protein",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "HIV2_B_Env_Protein-ReferenceSequenceTrack",
+        "adapter": {
+          "type": "IndexedFastaAdapter",
+          "fastaLocation": {
+            "uri": "./data/env/HIV2_B_env.fasta",
+            "locationType": "UriLocation"
+          },
+          "faiLocation": {
+            "uri": "./data/env/HIV2_B_env.fasta.fai",
+            "locationType": "UriLocation"
+          }
+        }
+      }
+    },
+    {
+      "name": "SIV_cpz_Env_Protien",
+      "sequence": {
+        "type": "ReferenceSequenceTrack",
+        "trackId": "SIV_cpz_Env_Protien-ReferenceSequenceTrack",
+        "adapter": {
+          "type": "IndexedFastaAdapter",
+          "fastaLocation": {
+            "uri": "./data/env/SIV_cpz_env.fasta",
+            "locationType": "UriLocation"
+          },
+          "faiLocation": {
+            "uri": "./data/env/SIV_cpz_env.fasta.fai",
             "locationType": "UriLocation"
           }
         }
@@ -98,7 +260,7 @@
         }
       },
       "assemblyNames": [
-        "HIV-1_Reference_Genome"
+        "HIV1_Reference_Genome"
       ]
     },
     {
@@ -120,7 +282,7 @@
         }
       },
       "assemblyNames": [
-        "HIV-2_Reference_Genome"
+        "HIV2_Reference_Genome"
       ]
     },
     {
@@ -143,6 +305,204 @@
       },
       "assemblyNames": [
         "SIV_Reference_Genome"
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "HIV1_M_B_gag_pol",
+      "name": "HIV1_M_B_GagPol_Annotations",
+      "adapter": {
+        "type": "Gff3Adapter",
+        "gffLocation": {
+          "uri": "./data/gag_pol_annotations/HIV1_M_B_gag_pol_sorted.gff.gz",
+          "locationType": "UriLocation"
+        },
+        "index": {
+          "location": {
+            "uri": "./data/gag_pol_annotations/HIV1_M_B_gag_pol_sorted.gff.gz.tbi",
+            "locationType": "UriLocation"
+          },
+          "indexType": "TBI"
+        }
+      },
+      "assemblyNames": [
+        "HIV1_M_B_GagPol_Protein"
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "HIV1_M_C_gag_pol",
+      "name": "HIV1_M_C_GagPol_Annotations",
+      "adapter": {
+        "type": "Gff3Adapter",
+        "gffLocation": {
+          "uri": "./data/gag_pol_annotations/HIV1_M_C_gag_pol_sorted.gff.gz",
+          "locationType": "UriLocation"
+        },
+        "index": {
+          "location": {
+            "uri": "./data/gag_pol_annotations/HIV1_M_C_gag_pol_sorted.gff.gz.tbi",
+            "locationType": "UriLocation"
+          },
+          "indexType": "TBI"
+        }
+      },
+      "assemblyNames": [
+        "HIV1_M_C_GagPol_Protein"
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "HIV2_A_gag_pol",
+      "name": "HIV2_A_GagPol_Annotations",
+      "adapter": {
+        "type": "Gff3Adapter",
+        "gffLocation": {
+          "uri": "./data/gag_pol_annotations/HIV2_A_gag_pol_sorted.gff.gz",
+          "locationType": "UriLocation"
+        },
+        "index": {
+          "location": {
+            "uri": "./data/gag_pol_annotations/HIV2_A_gag_pol_sorted.gff.gz.tbi",
+            "locationType": "UriLocation"
+          },
+          "indexType": "TBI"
+        }
+      },
+      "assemblyNames": [
+        "HIV2_A_GagPol_Protein"
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "HIV2_B_gag_pol",
+      "name": "HIV2_B_GagPol_Annotations",
+      "adapter": {
+        "type": "Gff3Adapter",
+        "gffLocation": {
+          "uri": "./data/gag_pol_annotations/HIV2_B_gag_pol_sorted.gff.gz",
+          "locationType": "UriLocation"
+        },
+        "index": {
+          "location": {
+            "uri": "./data/gag_pol_annotations/HIV2_B_gag_pol_sorted.gff.gz.tbi",
+            "locationType": "UriLocation"
+          },
+          "indexType": "TBI"
+        }
+      },
+      "assemblyNames": [
+        "HIV2_B_GagPol_Protein"
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "SIV_cpz_gag_pol",
+      "name": "SIV_cpz_GagPol_Annotations",
+      "adapter": {
+        "type": "Gff3Adapter",
+        "gffLocation": {
+          "uri": "./data/gag_pol_annotations/SIV_cpz_gag_pol.gff.gz",
+          "locationType": "UriLocation"
+        },
+        "index": {
+          "location": {
+            "uri": "./data/gag_pol_annotations/SIV_cpz_gag_pol_sorted.gff.gz.tbi",
+            "locationType": "UriLocation"
+          },
+          "indexType": "TBI"
+        }
+      },
+      "assemblyNames": [
+        "SIV_cpz_GagPol_Protein"
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "HIV1_M_B_env_sorted.gff",
+      "name": "HIV1_M_B_Env_annotations",
+      "adapter": {
+        "type": "Gff3TabixAdapter",
+        "gffGzLocation": {
+          "uri": "./data/env_annotations/HIV1_M_B_env_sorted.gff.gz",
+          "locationType": "UriLocation"
+        },
+        "index": {
+          "location": {
+            "uri": "./data/env_annotations/HIV1_M_B_env_sorted.gff.gz.tbi",
+            "locationType": "UriLocation"
+          },
+          "indexType": "TBI"
+        }
+      },
+      "assemblyNames": [
+        "HIV1_M_B_Env_Protien"
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "HIV1_M_C_env_sorted.gff",
+      "name": "HIV1_M_C_Env_annotations",
+      "adapter": {
+        "type": "Gff3TabixAdapter",
+        "gffGzLocation": {
+          "uri": "./data/env_annotations/HIV1_M_C_env_sorted.gff.gz",
+          "locationType": "UriLocation"
+        },
+        "index": {
+          "location": {
+            "uri": "./data/env_annotations/HIV1_M_C_env_sorted.gff.gz.tbi",
+            "locationType": "UriLocation"
+          },
+          "indexType": "TBI"
+        }
+      },
+      "assemblyNames": [
+        "HIV1_M_C_Env_Protien"
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "HIV2_A_env_sorted.gff",
+      "name": "SIV_cpz_Env_annotations",
+      "adapter": {
+        "type": "Gff3TabixAdapter",
+        "gffGzLocation": {
+          "uri": "./data/env_annotations/HIV2_A_env_sorted.gff.gz",
+          "locationType": "UriLocation"
+        },
+        "index": {
+          "location": {
+            "uri": "./data/env_annotations/HIV2_A_env_sorted.gff.gz.tbi",
+            "locationType": "UriLocation"
+          },
+          "indexType": "TBI"
+        }
+      },
+      "assemblyNames": [
+        "SIV_cpz_Env_Protien"
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "HIV2_B_env_sorted.gff",
+      "name": "HIV2_B_Env_annotations",
+      "adapter": {
+        "type": "Gff3TabixAdapter",
+        "gffGzLocation": {
+          "uri": "./data/env_annotations/HIV2_B_env_sorted.gff.gz",
+          "locationType": "UriLocation"
+        },
+        "index": {
+          "location": {
+            "uri": "./data/env_annotations/HIV2_B_env_sorted.gff.gz.tbi",
+            "locationType": "UriLocation"
+          },
+          "indexType": "TBI"
+        }
+      },
+      "assemblyNames": [
+        "HIV2_B_Env_Protien"
       ]
     }
   ],
