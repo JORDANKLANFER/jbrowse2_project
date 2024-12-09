@@ -217,10 +217,10 @@
       }
     },
     {
-      "name": "SIV_cpz_Env_Protien",
+      "name": "SIV_cpz_Env_Protein",
       "sequence": {
         "type": "ReferenceSequenceTrack",
-        "trackId": "SIV_cpz_Env_Protien-ReferenceSequenceTrack",
+        "trackId": "SIV_cpz_Env_Protein-ReferenceSequenceTrack",
         "adapter": {
           "type": "IndexedFastaAdapter",
           "fastaLocation": {
@@ -402,7 +402,7 @@
       "adapter": {
         "type": "Gff3Adapter",
         "gffLocation": {
-          "uri": "./data/gag_pol_annotations/SIV_cpz_gag_pol.gff.gz",
+          "uri": "./data/gag_pol_annotations/SIV_cpz_gag_pol_sorted.gff.gz",
           "locationType": "UriLocation"
         },
         "index": {
@@ -436,7 +436,7 @@
         }
       },
       "assemblyNames": [
-        "HIV1_M_B_Env_Protien"
+        "HIV1_M_B_Env_Protein"
       ]
     },
     {
@@ -458,13 +458,13 @@
         }
       },
       "assemblyNames": [
-        "HIV1_M_C_Env_Protien"
+        "HIV1_M_C_Env_Protein"
       ]
     },
     {
       "type": "FeatureTrack",
       "trackId": "HIV2_A_env_sorted.gff",
-      "name": "SIV_cpz_Env_annotations",
+      "name": "HIV2_A_Env_annotations",
       "adapter": {
         "type": "Gff3TabixAdapter",
         "gffGzLocation": {
@@ -480,7 +480,7 @@
         }
       },
       "assemblyNames": [
-        "SIV_cpz_Env_Protien"
+        "HIV2_A_Env_Protein"
       ]
     },
     {
@@ -502,7 +502,29 @@
         }
       },
       "assemblyNames": [
-        "HIV2_B_Env_Protien"
+        "HIV2_B_Env_Protein"
+      ]
+    },
+    {
+      "type": "FeatureTrack",
+      "trackId": "SIV_cpz_env_annotations",
+      "name": "SIV_cpz_env_annotations",
+      "adapter": {
+        "type": "Gff3TabixAdapter",
+        "gffGzLocation": {
+          "uri": "./data/env_annotations/SIV_cpz_env_sorted.gff.gz",
+          "locationType": "UriLocation"
+        },
+        "index": {
+          "location": {
+            "uri": "./data/env_annotations/SIV_cpz_env_sorted.gff.gz.tbi",
+            "locationType": "UriLocation"
+          },
+          "indexType": "TBI"
+        }
+      },
+      "assemblyNames": [
+        "SIV_cpz_Env_Protein"
       ]
     }
   ],
@@ -562,6 +584,234 @@
       },
       "assemblyNames": [
         "SIV_Reference_Genome"
+      ]
+    },
+    {
+      "type": "TrixTextSearchAdapter",
+      "textSearchAdapterId": "HIV1_Reference_Genome-index",
+      "ixFilePath": {
+        "uri": "trix/HIV1_Reference_Genome.ix",
+        "locationType": "UriLocation"
+      },
+      "ixxFilePath": {
+        "uri": "trix/HIV1_Reference_Genome.ixx",
+        "locationType": "UriLocation"
+      },
+      "metaFilePath": {
+        "uri": "trix/HIV1_Reference_Genome_meta.json",
+        "locationType": "UriLocation"
+      },
+      "assemblyNames": [
+        "HIV1_Reference_Genome"
+      ]
+    },
+    {
+      "type": "TrixTextSearchAdapter",
+      "textSearchAdapterId": "HIV2_Reference_Genome-index",
+      "ixFilePath": {
+        "uri": "trix/HIV2_Reference_Genome.ix",
+        "locationType": "UriLocation"
+      },
+      "ixxFilePath": {
+        "uri": "trix/HIV2_Reference_Genome.ixx",
+        "locationType": "UriLocation"
+      },
+      "metaFilePath": {
+        "uri": "trix/HIV2_Reference_Genome_meta.json",
+        "locationType": "UriLocation"
+      },
+      "assemblyNames": [
+        "HIV2_Reference_Genome"
+      ]
+    },
+    {
+      "type": "TrixTextSearchAdapter",
+      "textSearchAdapterId": "HIV1_M_B_GagPol_Protein-index",
+      "ixFilePath": {
+        "uri": "trix/HIV1_M_B_GagPol_Protein.ix",
+        "locationType": "UriLocation"
+      },
+      "ixxFilePath": {
+        "uri": "trix/HIV1_M_B_GagPol_Protein.ixx",
+        "locationType": "UriLocation"
+      },
+      "metaFilePath": {
+        "uri": "trix/HIV1_M_B_GagPol_Protein_meta.json",
+        "locationType": "UriLocation"
+      },
+      "assemblyNames": [
+        "HIV1_M_B_GagPol_Protein"
+      ]
+    },
+    {
+      "type": "TrixTextSearchAdapter",
+      "textSearchAdapterId": "HIV1_M_C_GagPol_Protein-index",
+      "ixFilePath": {
+        "uri": "trix/HIV1_M_C_GagPol_Protein.ix",
+        "locationType": "UriLocation"
+      },
+      "ixxFilePath": {
+        "uri": "trix/HIV1_M_C_GagPol_Protein.ixx",
+        "locationType": "UriLocation"
+      },
+      "metaFilePath": {
+        "uri": "trix/HIV1_M_C_GagPol_Protein_meta.json",
+        "locationType": "UriLocation"
+      },
+      "assemblyNames": [
+        "HIV1_M_C_GagPol_Protein"
+      ]
+    },
+    {
+      "type": "TrixTextSearchAdapter",
+      "textSearchAdapterId": "HIV2_A_GagPol_Protein-index",
+      "ixFilePath": {
+        "uri": "trix/HIV2_A_GagPol_Protein.ix",
+        "locationType": "UriLocation"
+      },
+      "ixxFilePath": {
+        "uri": "trix/HIV2_A_GagPol_Protein.ixx",
+        "locationType": "UriLocation"
+      },
+      "metaFilePath": {
+        "uri": "trix/HIV2_A_GagPol_Protein_meta.json",
+        "locationType": "UriLocation"
+      },
+      "assemblyNames": [
+        "HIV2_A_GagPol_Protein"
+      ]
+    },
+    {
+      "type": "TrixTextSearchAdapter",
+      "textSearchAdapterId": "HIV2_B_GagPol_Protein-index",
+      "ixFilePath": {
+        "uri": "trix/HIV2_B_GagPol_Protein.ix",
+        "locationType": "UriLocation"
+      },
+      "ixxFilePath": {
+        "uri": "trix/HIV2_B_GagPol_Protein.ixx",
+        "locationType": "UriLocation"
+      },
+      "metaFilePath": {
+        "uri": "trix/HIV2_B_GagPol_Protein_meta.json",
+        "locationType": "UriLocation"
+      },
+      "assemblyNames": [
+        "HIV2_B_GagPol_Protein"
+      ]
+    },
+    {
+      "type": "TrixTextSearchAdapter",
+      "textSearchAdapterId": "SIV_cpz_GagPol_Protein-index",
+      "ixFilePath": {
+        "uri": "trix/SIV_cpz_GagPol_Protein.ix",
+        "locationType": "UriLocation"
+      },
+      "ixxFilePath": {
+        "uri": "trix/SIV_cpz_GagPol_Protein.ixx",
+        "locationType": "UriLocation"
+      },
+      "metaFilePath": {
+        "uri": "trix/SIV_cpz_GagPol_Protein_meta.json",
+        "locationType": "UriLocation"
+      },
+      "assemblyNames": [
+        "SIV_cpz_GagPol_Protein"
+      ]
+    },
+    {
+      "type": "TrixTextSearchAdapter",
+      "textSearchAdapterId": "SIV_cpz_Env_Protein-index",
+      "ixFilePath": {
+        "uri": "trix/SIV_cpz_Env_Protein.ix",
+        "locationType": "UriLocation"
+      },
+      "ixxFilePath": {
+        "uri": "trix/SIV_cpz_Env_Protein.ixx",
+        "locationType": "UriLocation"
+      },
+      "metaFilePath": {
+        "uri": "trix/SIV_cpz_Env_Protein_meta.json",
+        "locationType": "UriLocation"
+      },
+      "assemblyNames": [
+        "SIV_cpz_Env_Protein"
+      ]
+    },
+    {
+      "type": "TrixTextSearchAdapter",
+      "textSearchAdapterId": "HIV1_M_B_Env_Protein-index",
+      "ixFilePath": {
+        "uri": "trix/HIV1_M_B_Env_Protein.ix",
+        "locationType": "UriLocation"
+      },
+      "ixxFilePath": {
+        "uri": "trix/HIV1_M_B_Env_Protein.ixx",
+        "locationType": "UriLocation"
+      },
+      "metaFilePath": {
+        "uri": "trix/HIV1_M_B_Env_Protein_meta.json",
+        "locationType": "UriLocation"
+      },
+      "assemblyNames": [
+        "HIV1_M_B_Env_Protein"
+      ]
+    },
+    {
+      "type": "TrixTextSearchAdapter",
+      "textSearchAdapterId": "HIV1_M_C_Env_Protein-index",
+      "ixFilePath": {
+        "uri": "trix/HIV1_M_C_Env_Protein.ix",
+        "locationType": "UriLocation"
+      },
+      "ixxFilePath": {
+        "uri": "trix/HIV1_M_C_Env_Protein.ixx",
+        "locationType": "UriLocation"
+      },
+      "metaFilePath": {
+        "uri": "trix/HIV1_M_C_Env_Protein_meta.json",
+        "locationType": "UriLocation"
+      },
+      "assemblyNames": [
+        "HIV1_M_C_Env_Protein"
+      ]
+    },
+    {
+      "type": "TrixTextSearchAdapter",
+      "textSearchAdapterId": "HIV2_A_Env_Protein-index",
+      "ixFilePath": {
+        "uri": "trix/HIV2_A_Env_Protein.ix",
+        "locationType": "UriLocation"
+      },
+      "ixxFilePath": {
+        "uri": "trix/HIV2_A_Env_Protein.ixx",
+        "locationType": "UriLocation"
+      },
+      "metaFilePath": {
+        "uri": "trix/HIV2_A_Env_Protein_meta.json",
+        "locationType": "UriLocation"
+      },
+      "assemblyNames": [
+        "HIV2_A_Env_Protein"
+      ]
+    },
+    {
+      "type": "TrixTextSearchAdapter",
+      "textSearchAdapterId": "HIV2_B_Env_Protein-index",
+      "ixFilePath": {
+        "uri": "trix/HIV2_B_Env_Protein.ix",
+        "locationType": "UriLocation"
+      },
+      "ixxFilePath": {
+        "uri": "trix/HIV2_B_Env_Protein.ixx",
+        "locationType": "UriLocation"
+      },
+      "metaFilePath": {
+        "uri": "trix/HIV2_B_Env_Protein_meta.json",
+        "locationType": "UriLocation"
+      },
+      "assemblyNames": [
+        "HIV2_B_Env_Protein"
       ]
     }
   ]

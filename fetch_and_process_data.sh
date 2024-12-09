@@ -14,6 +14,7 @@ cd "$(dirname "$0")"
 # Create main data directory
 mkdir -p ./data
 
+
 # ------------------------------------------------------------------------
 # Reference Genome and Annotation URLs
 HIV1_reference_genome="https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/864/765/GCF_000864765.1_ViralProj15476/GCF_000864765.1_ViralProj15476_genomic.fna.gz"
@@ -110,22 +111,26 @@ wget -O ./data/env_annotations/HIV2_A_env.gff "$HIV2_A_env_a"
 wget -O ./data/env_annotations/HIV2_B_env.gff "$HIV2_B_env_a"
 wget -O ./data/env_annotations/SIV_cpz_env.gff "$SIV_cpz_env_a"
 
+
 echo "Sorting and indexing genome annotations..."
 # HIV-1
-gunzip -c ./data/hiv1_data/hiv1_annotations.gff > ./data/hiv1_data/hiv1_annotations.gff
+gunzip -c ./data/hiv1_data/hiv1_annotations.gff.gz > ./data/hiv1_data/hiv1_annotations.gff
 jbrowse sort-gff ./data/hiv1_data/hiv1_annotations.gff > ./data/hiv1_data/hiv1_sorted_annotations.gff
+bgzip -c ./data/hiv1_data/hiv1_sorted_annotations.gff > ./data/hiv1_data/hiv1_sorted_annotations.gff.gz 
 tabix ./data/hiv1_data/hiv1_sorted_annotations.gff.gz
-rm ./data/hiv1_data/hiv1_annotations.gff.gz ./data/hiv1_data/hiv1_sorted_annotations.gff.gz
+rm ./data/hiv1_data/hiv1_annotations.gff ./data/hiv1_data/hiv1_sorted_annotations.gff
 
 # HIV-2
 gunzip -c ./data/hiv2_data/hiv2_annotations.gff.gz > ./data/hiv2_data/hiv2_annotations.gff
 jbrowse sort-gff ./data/hiv2_data/hiv2_annotations.gff > ./data/hiv2_data/hiv2_sorted_annotations.gff
+bgzip -c ./data/hiv2_data/hiv2_sorted_annotations.gff > ./data/hiv2_data/hiv2_sorted_annotations.gff.gz
 tabix ./data/hiv2_data/hiv2_sorted_annotations.gff.gz
 rm ./data/hiv2_data/hiv2_annotations.gff ./data/hiv2_data/hiv2_sorted_annotations.gff
 
 # SIV
 gunzip -c ./data/siv_data/siv_annotations.gff.gz > ./data/siv_data/siv_annotations.gff
 jbrowse sort-gff ./data/siv_data/siv_annotations.gff > ./data/siv_data/siv_sorted_annotations.gff
+bgzip -c ./data/siv_data/siv_sorted_annotations.gff > ./data/siv_data/siv_sorted_annotations.gff.gz  # Compress the sorted GFF
 tabix ./data/siv_data/siv_sorted_annotations.gff.gz
 rm ./data/siv_data/siv_annotations.gff ./data/siv_data/siv_sorted_annotations.gff
 
@@ -143,61 +148,128 @@ samtools faidx ./data/env/HIV1_M_C_env.fasta
 samtools faidx ./data/env/HIV2_A_env.fasta
 samtools faidx ./data/env/HIV2_B_env.fasta
 samtools faidx ./data/env/SIV_cpz_env.fasta
+#!/bin/bash
+
+# Define pairs of FASTA and GFF files
+fasta_files=(
+  "./data/gag_pol/HIV1_M_B_gag_pol.fasta"
+  "./data/gag_pol/HIV1_M_C_gag_pol.fasta"
+  "./data/gag_pol/HIV2_A_gag_pol.fasta"
+  "./data/gag_pol/HIV2_B_gag_pol.fasta"
+  "./data/gag_pol/SIV_cpz_gag_pol.fasta"
+  "./data/env/HIV1_M_B_env.fasta"
+  "./data/env/HIV1_M_C_env.fasta"
+  "./data/env/HIV2_A_env.fasta"
+  "./data/env/HIV2_B_env.fasta"
+  "./data/env/SIV_cpz_env.fasta"
+)
+
+gff_files=(
+  "./data/gag_pol_annotations/HIV1_M_B_gag_pol.gff"
+  "./data/gag_pol_annotations/HIV1_M_C_gag_pol.gff"
+  "./data/gag_pol_annotations/HIV2_A_gag_pol.gff"
+  "./data/gag_pol_annotations/HIV2_B_gag_pol.gff"
+  "./data/gag_pol_annotations/SIV_cpz_gag_pol.gff"
+  "./data/env_annotations/HIV1_M_B_env.gff"
+  "./data/env_annotations/HIV1_M_C_env.gff"
+  "./data/env_annotations/HIV2_A_env.gff"
+  "./data/env_annotations/HIV2_B_env.gff"
+  "./data/env_annotations/SIV_cpz_env.gff"
+)
+
+# Function to process a single FASTA and GFF pair
+process_fasta_and_gff() {
+  local fasta_file="$1"
+  local gff_file="$2"
+  local updated_fasta="${fasta_file%.fasta}_updated.fasta"
+
+  # Check if both files exist
+  if [[ ! -f "$fasta_file" ]]; then
+    echo "Error: FASTA file $fasta_file not found. Skipping..."
+    return
+  fi
+
+  if [[ ! -f "$gff_file" ]]; then
+    echo "Error: GFF file $gff_file not found. Skipping..."
+    return
+  fi
+
+  # Extract SEQID from the GFF file
+  SEQID=$(awk '{if ($1 !~ /^#/) {print $1; exit}}' "$gff_file")
+  if [[ -z "$SEQID" ]]; then
+    echo "Error: Could not extract SEQID from $gff_file. Skipping..."
+    return
+  fi
+
+  # Check and update FASTA header if necessary
+  CURRENT_HEADER=$(head -n 1 "$fasta_file" | sed 's/^>//')
+  if [[ "$CURRENT_HEADER" != "$SEQID" ]]; then
+    echo "Updating FASTA header in $fasta_file from '$CURRENT_HEADER' to '$SEQID'..."
+    sed "1s/>.*/>$SEQID/" "$fasta_file" > "$updated_fasta"
+    mv "$updated_fasta" "$fasta_file"
+    echo "FASTA header updated successfully!"
+  else
+    echo "FASTA header in $fasta_file already matches GFF seqid: '$SEQID'. No changes needed."
+  fi
+}
+
+# Iterate over the arrays
+for i in "${!fasta_files[@]}"; do
+  process_fasta_and_gff "${fasta_files[$i]}" "${gff_files[$i]}"
+done
 
 echo "Sorting and indexing protein annotations..."
 # Gag-Pol Annotations
 jbrowse sort-gff ./data/gag_pol_annotations/HIV1_M_B_gag_pol.gff > ./data/gag_pol_annotations/HIV1_M_B_gag_pol_sorted.gff
 bgzip -c ./data/gag_pol_annotations/HIV1_M_B_gag_pol_sorted.gff > ./data/gag_pol_annotations/HIV1_M_B_gag_pol_sorted.gff.gz
 tabix ./data/gag_pol_annotations/HIV1_M_B_gag_pol_sorted.gff.gz
-rm ./data/gag_pol_annotations/HIV1_M_B_gag_pol.gff ./data/gag_pol_annotations/HIV1_M_B_gag_pol_sorted.gff
+#rm ./data/gag_pol_annotations/HIV1_M_B_gag_pol.gff ./data/gag_pol_annotations/HIV1_M_B_gag_pol_sorted.gff
 
 jbrowse sort-gff ./data/gag_pol_annotations/HIV1_M_C_gag_pol.gff > ./data/gag_pol_annotations/HIV1_M_C_gag_pol_sorted.gff
 bgzip -c ./data/gag_pol_annotations/HIV1_M_C_gag_pol_sorted.gff > ./data/gag_pol_annotations/HIV1_M_C_gag_pol_sorted.gff.gz
 tabix ./data/gag_pol_annotations/HIV1_M_C_gag_pol_sorted.gff.gz
-rm ./data/gag_pol_annotations/HIV1_M_C_gag_pol.gff ./data/gag_pol_annotations/HIV1_M_C_gag_pol_sorted.gff
+#rm ./data/gag_pol_annotations/HIV1_M_C_gag_pol.gff ./data/gag_pol_annotations/HIV1_M_C_gag_pol_sorted.gff
 
 jbrowse sort-gff ./data/gag_pol_annotations/HIV2_A_gag_pol.gff > ./data/gag_pol_annotations/HIV2_A_gag_pol_sorted.gff
 bgzip -c ./data/gag_pol_annotations/HIV2_A_gag_pol_sorted.gff > ./data/gag_pol_annotations/HIV2_A_gag_pol_sorted.gff.gz
 tabix ./data/gag_pol_annotations/HIV2_A_gag_pol_sorted.gff.gz
-rm ./data/gag_pol_annotations/HIV2_A_gag_pol.gff ./data/gag_pol_annotations/HIV2_A_gag_pol_sorted.gff
+#rm ./data/gag_pol_annotations/HIV2_A_gag_pol.gff ./data/gag_pol_annotations/HIV2_A_gag_pol_sorted.gff
 
 jbrowse sort-gff ./data/gag_pol_annotations/HIV2_B_gag_pol.gff > ./data/gag_pol_annotations/HIV2_B_gag_pol_sorted.gff
 bgzip -c ./data/gag_pol_annotations/HIV2_B_gag_pol_sorted.gff > ./data/gag_pol_annotations/HIV2_B_gag_pol_sorted.gff.gz
 tabix ./data/gag_pol_annotations/HIV2_B_gag_pol_sorted.gff.gz
-rm ./data/gag_pol_annotations/HIV2_B_gag_pol.gff ./data/gag_pol_annotations/HIV2_B_gag_pol_sorted.gff
+#rm ./data/gag_pol_annotations/HIV2_B_gag_pol.gff ./data/gag_pol_annotations/HIV2_B_gag_pol_sorted.gff
 
 jbrowse sort-gff ./data/gag_pol_annotations/SIV_cpz_gag_pol.gff > ./data/gag_pol_annotations/SIV_cpz_gag_pol_sorted.gff
 bgzip -c ./data/gag_pol_annotations/SIV_cpz_gag_pol_sorted.gff > ./data/gag_pol_annotations/SIV_cpz_gag_pol_sorted.gff.gz
 tabix ./data/gag_pol_annotations/SIV_cpz_gag_pol_sorted.gff.gz
-rm ./data/gag_pol_annotations/SIV_cpz_gag_pol.gff ./data/gag_pol_annotations/SIV_cpz_gag_pol_sorted.gff
+#rm ./data/gag_pol_annotations/HIV2_B_gag_pol.gff ./data/gag_pol_annotations/HIV2_B_gag_pol_sorted.gff
 
 # Env Annotations
 jbrowse sort-gff ./data/env_annotations/HIV1_M_B_env.gff > ./data/env_annotations/HIV1_M_B_env_sorted.gff
 bgzip -c ./data/env_annotations/HIV1_M_B_env_sorted.gff > ./data/env_annotations/HIV1_M_B_env_sorted.gff.gz
 tabix ./data/env_annotations/HIV1_M_B_env_sorted.gff.gz
-rm ./data/env_annotations/HIV1_M_B_env.gff ./data/env_annotations/HIV1_M_B_env_sorted.gff
+#rm ./data/env_annotations/HIV1_M_B_env.gff ./data/env_annotations/HIV1_M_B_env_sorted.gff
 
 jbrowse sort-gff ./data/env_annotations/HIV1_M_C_env.gff > ./data/env_annotations/HIV1_M_C_env_sorted.gff
 bgzip -c ./data/env_annotations/HIV1_M_C_env_sorted.gff > ./data/env_annotations/HIV1_M_C_env_sorted.gff.gz
 tabix ./data/env_annotations/HIV1_M_C_env_sorted.gff.gz
-rm ./data/env_annotations/HIV1_M_C_env.gff ./data/env_annotations/HIV1_M_C_env_sorted.gff
+#rm ./data/env_annotations/HIV1_M_C_env.gff ./data/env_annotations/HIV1_M_C_env_sorted.gff
 
 jbrowse sort-gff ./data/env_annotations/HIV2_A_env.gff > ./data/env_annotations/HIV2_A_env_sorted.gff
 bgzip -c ./data/env_annotations/HIV2_A_env_sorted.gff > ./data/env_annotations/HIV2_A_env_sorted.gff.gz
 tabix ./data/env_annotations/HIV2_A_env_sorted.gff.gz
-rm ./data/env_annotations/HIV2_A_env.gff ./data/env_annotations/HIV2_A_env_sorted.gff
+#rm ./data/env_annotations/HIV2_A_env.gff ./data/env_annotations/HIV2_A_env_sorted.gff
 
 jbrowse sort-gff ./data/env_annotations/HIV2_B_env.gff > ./data/env_annotations/HIV2_B_env_sorted.gff
 bgzip -c ./data/env_annotations/HIV2_B_env_sorted.gff > ./data/env_annotations/HIV2_B_env_sorted.gff.gz
 tabix ./data/env_annotations/HIV2_B_env_sorted.gff.gz
-rm ./data/env_annotations/HIV2_B_env.gff ./data/env_annotations/HIV2_B_env_sorted.gff
+#rm ./data/env_annotations/HIV2_B_env.gff ./data/env_annotations/HIV2_B_env_sorted.gff
 
 jbrowse sort-gff ./data/env_annotations/SIV_cpz_env.gff > ./data/env_annotations/SIV_cpz_env_sorted.gff
 bgzip -c ./data/env_annotations/SIV_cpz_env_sorted.gff > ./data/env_annotations/SIV_cpz_env_sorted.gff.gz
 tabix ./data/env_annotations/SIV_cpz_env_sorted.gff.gz
-rm ./data/env_annotations/SIV_cpz_env.gff ./data/env_annotations/SIV_cpz_env_sorted.gff
-
-
+#rm ./data/env_annotations/SIV_cpz_env.gff ./data/env_annotations/SIV_cpz_env_sorted.gff
 
 echo "Creating text index for JBrowse..."
 jbrowse text-index --target ./ --force
