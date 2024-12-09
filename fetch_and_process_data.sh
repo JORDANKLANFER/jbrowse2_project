@@ -3,6 +3,7 @@
 # Genome and Annotation Fetching Script
 
 # Ensure required tools (wget, samtools, jbrowse) are installed before running this script.
+# need minimap 2 for synteny tracks 
 # Run this script in the jbrowse2 directory:
 # chmod +x fetch_and_process_data.sh && ./fetch_and_process_data.sh
 
@@ -112,6 +113,7 @@ wget -O ./data/env_annotations/HIV2_B_env.gff "$HIV2_B_env_a"
 wget -O ./data/env_annotations/SIV_cpz_env.gff "$SIV_cpz_env_a"
 
 
+
 echo "Sorting and indexing genome annotations..."
 # HIV-1
 gunzip -c ./data/hiv1_data/hiv1_annotations.gff.gz > ./data/hiv1_data/hiv1_annotations.gff
@@ -134,23 +136,7 @@ bgzip -c ./data/siv_data/siv_sorted_annotations.gff > ./data/siv_data/siv_sorted
 tabix ./data/siv_data/siv_sorted_annotations.gff.gz
 rm ./data/siv_data/siv_annotations.gff ./data/siv_data/siv_sorted_annotations.gff
 
-echo "Indexing protein sequences..."
-# Gag-Pol Proteins
-samtools faidx ./data/gag_pol/HIV1_M_B_gag_pol.fasta
-samtools faidx ./data/gag_pol/HIV1_M_C_gag_pol.fasta
-samtools faidx ./data/gag_pol/HIV2_A_gag_pol.fasta
-samtools faidx ./data/gag_pol/HIV2_B_gag_pol.fasta
-samtools faidx ./data/gag_pol/SIV_cpz_gag_pol.fasta
-
-# Env Proteins
-samtools faidx ./data/env/HIV1_M_B_env.fasta
-samtools faidx ./data/env/HIV1_M_C_env.fasta
-samtools faidx ./data/env/HIV2_A_env.fasta
-samtools faidx ./data/env/HIV2_B_env.fasta
-samtools faidx ./data/env/SIV_cpz_env.fasta
-#!/bin/bash
-
-# Define pairs of FASTA and GFF files
+# Aligning the fasta and gff names for protien data 
 fasta_files=(
   "./data/gag_pol/HIV1_M_B_gag_pol.fasta"
   "./data/gag_pol/HIV1_M_C_gag_pol.fasta"
@@ -218,6 +204,24 @@ for i in "${!fasta_files[@]}"; do
   process_fasta_and_gff "${fasta_files[$i]}" "${gff_files[$i]}"
 done
 
+
+echo "Indexing protein sequences..."
+# Gag-Pol Proteins
+samtools faidx ./data/gag_pol/HIV1_M_B_gag_pol.fasta
+samtools faidx ./data/gag_pol/HIV1_M_C_gag_pol.fasta
+samtools faidx ./data/gag_pol/HIV2_A_gag_pol.fasta
+samtools faidx ./data/gag_pol/HIV2_B_gag_pol.fasta
+samtools faidx ./data/gag_pol/SIV_cpz_gag_pol.fasta
+
+# Env Proteins
+samtools faidx ./data/env/HIV1_M_B_env.fasta
+samtools faidx ./data/env/HIV1_M_C_env.fasta
+samtools faidx ./data/env/HIV2_A_env.fasta
+samtools faidx ./data/env/HIV2_B_env.fasta
+samtools faidx ./data/env/SIV_cpz_env.fasta
+#!/bin/bash
+
+
 echo "Sorting and indexing protein annotations..."
 # Gag-Pol Annotations
 jbrowse sort-gff ./data/gag_pol_annotations/HIV1_M_B_gag_pol.gff > ./data/gag_pol_annotations/HIV1_M_B_gag_pol_sorted.gff
@@ -270,6 +274,19 @@ jbrowse sort-gff ./data/env_annotations/SIV_cpz_env.gff > ./data/env_annotations
 bgzip -c ./data/env_annotations/SIV_cpz_env_sorted.gff > ./data/env_annotations/SIV_cpz_env_sorted.gff.gz
 tabix ./data/env_annotations/SIV_cpz_env_sorted.gff.gz
 #rm ./data/env_annotations/SIV_cpz_env.gff ./data/env_annotations/SIV_cpz_env_sorted.gff
+
+
+#creating and adding synteny data 
+mkdir -p ./data/synteny
+
+#genomes 
+minimap2 data/hiv2_data/hiv2_genome.fna data/hiv1_data/hiv1_genome.fna > data/synteny/hiv1_vs_hiv2.paf
+minimap2 data/siv_data/siv_genome.fna data/hiv1_data/hiv1_genome.fna > data/synteny/hiv1_vs_siv.paf
+minimap2 data/siv_data/siv_genome.fna data/hiv2_data/hiv2_genome.fna > data/synteny/hiv2_vs_siv.paf
+minimap2 data/hiv1_data/hiv1_genome.fna data/hiv2_data/hiv2_genome.fna > data/synteny/hiv2_vs_hiv1.paf
+minimap2 data/hiv1_data/hiv1_genome.fna data/siv_data/siv_genome.fna > data/synteny/siv_vs_hiv1.paf
+minimap2 data/hiv2_data/hiv2_genome.fna data/siv_data/siv_genome.fna > data/synteny/siv_vs_hiv2.paf
+
 
 echo "Creating text index for JBrowse..."
 jbrowse text-index --target ./ --force

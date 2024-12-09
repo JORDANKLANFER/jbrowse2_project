@@ -526,6 +526,126 @@
       "assemblyNames": [
         "SIV_cpz_Env_Protein"
       ]
+    },
+    {
+      "type": "SyntenyTrack",
+      "trackId": "hiv1_vs_hiv2",
+      "name": "HIV1-HIV2 Genome Synteny",
+      "adapter": {
+        "type": "PAFAdapter",
+        "pafLocation": {
+          "uri": "data/synteny/hiv1_vs_hiv2.paf",
+          "locationType": "UriLocation"
+        },
+        "assemblyNames": [
+          "HIV1_Reference_Genome",
+          "HIV2_Reference_Genome"
+        ]
+      },
+      "assemblyNames": [
+        "HIV1_Reference_Genome",
+        "HIV2_Reference_Genome"
+      ]
+    },
+    {
+      "type": "SyntenyTrack",
+      "trackId": "hiv1_vs_siv",
+      "name": "HIV1-SIV Genome Synteny",
+      "adapter": {
+        "type": "PAFAdapter",
+        "pafLocation": {
+          "uri": "hiv1_vs_siv.paf",
+          "locationType": "UriLocation"
+        },
+        "assemblyNames": [
+          "HIV1_Reference_Genome",
+          "SIV_Reference_Genome"
+        ]
+      },
+      "assemblyNames": [
+        "HIV1_Reference_Genome",
+        "SIV_Reference_Genome"
+      ]
+    },
+    {
+      "type": "SyntenyTrack",
+      "trackId": "hiv2_vs_siv",
+      "name": "HIV2-SIV Genome Synteny",
+      "adapter": {
+        "type": "PAFAdapter",
+        "pafLocation": {
+          "uri": "data/synteny/hiv2_vs_siv.paf",
+          "locationType": "UriLocation"
+        },
+        "assemblyNames": [
+          "HIV2_Reference_Genome",
+          "SIV_Reference_Genome"
+        ]
+      },
+      "assemblyNames": [
+        "HIV2_Reference_Genome",
+        "SIV_Reference_Genome"
+      ]
+    },
+    {
+      "type": "SyntenyTrack",
+      "trackId": "hiv2_vs_hiv1",
+      "name": "HIV2-HIV1 Genome Synteny",
+      "adapter": {
+        "type": "PAFAdapter",
+        "pafLocation": {
+          "uri": "data/synteny/hiv2_vs_hiv1.paf",
+          "locationType": "UriLocation"
+        },
+        "assemblyNames": [
+          "HIV2_Reference_Genome",
+          "HIV1_Reference_Genome"
+        ]
+      },
+      "assemblyNames": [
+        "HIV2_Reference_Genome",
+        "HIV1_Reference_Genome"
+      ]
+    },
+    {
+      "type": "SyntenyTrack",
+      "trackId": "siv_vs_hiv1",
+      "name": "SIV-HIV1 Genome Synteny",
+      "adapter": {
+        "type": "PAFAdapter",
+        "pafLocation": {
+          "uri": "data/synteny/siv_vs_hiv1.paf",
+          "locationType": "UriLocation"
+        },
+        "assemblyNames": [
+          "SIV_Reference_Genome",
+          "HIV1_Reference_Genome"
+        ]
+      },
+      "assemblyNames": [
+        "SIV_Reference_Genome",
+        "HIV1_Reference_Genome"
+      ]
+    },
+    {
+      "type": "SyntenyTrack",
+      "trackId": "siv_vs_hiv2",
+      "name": "SIV-HIV2 Genome Synteny",
+      "adapter": {
+        "type": "PAFAdapter",
+        "pafLocation": {
+          "uri": "data/synteny/siv_vs_hiv2.paf",
+          "locationType": "UriLocation"
+        },
+        "assemblyNames": [
+          "SIV_Reference_Genome",
+          "HIV2_Reference_Genome"
+        ]
+      },
+      "assemblyNames": [
+        "SIV_Reference_Genome",
+        "HIV2_Reference_Genome"
+      ]
     }
   ],
   "aggregateTextSearchAdapters": [
