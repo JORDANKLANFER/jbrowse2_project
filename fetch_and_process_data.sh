@@ -114,20 +114,20 @@ echo "Sorting and indexing genome annotations..."
 # HIV-1
 gunzip -c ./data/hiv1_data/hiv1_annotations.gff > ./data/hiv1_data/hiv1_annotations.gff
 jbrowse sort-gff ./data/hiv1_data/hiv1_annotations.gff > ./data/hiv1_data/hiv1_sorted_annotations.gff
-tabix ./data/hiv1_data/hiv1_sorted_annotations.gff
+tabix ./data/hiv1_data/hiv1_sorted_annotations.gff.gz
 rm ./data/hiv1_data/hiv1_annotations.gff.gz ./data/hiv1_data/hiv1_sorted_annotations.gff.gz
 
 # HIV-2
 gunzip -c ./data/hiv2_data/hiv2_annotations.gff.gz > ./data/hiv2_data/hiv2_annotations.gff
 jbrowse sort-gff ./data/hiv2_data/hiv2_annotations.gff > ./data/hiv2_data/hiv2_sorted_annotations.gff
-tabix ./data/hiv2_data/hiv2_sorted_annotations.gff
-rm ./data/hiv2_data/hiv2_annotations.gff.gz ./data/hiv2_data/hiv2_sorted_annotations.gff.gz
+tabix ./data/hiv2_data/hiv2_sorted_annotations.gff.gz
+rm ./data/hiv2_data/hiv2_annotations.gff ./data/hiv2_data/hiv2_sorted_annotations.gff
 
 # SIV
 gunzip -c ./data/siv_data/siv_annotations.gff.gz > ./data/siv_data/siv_annotations.gff
 jbrowse sort-gff ./data/siv_data/siv_annotations.gff > ./data/siv_data/siv_sorted_annotations.gff
-tabix ./data/siv_data/siv_sorted_annotations.gff
-rm ./data/siv_data/siv_annotations.gff.gz ./data/siv_data/siv_sorted_annotations.gff.gz
+tabix ./data/siv_data/siv_sorted_annotations.gff.gz
+rm ./data/siv_data/siv_annotations.gff ./data/siv_data/siv_sorted_annotations.gff
 
 echo "Indexing protein sequences..."
 # Gag-Pol Proteins
