@@ -130,9 +130,6 @@ Within the `jbrowse2_project` directory, run the following script to fetch and p
 bash fetch_and_process_data.sh
 ```
 
-# 🧬 Launch the JBrowse Instance
-Open `http://yourhost/jbrowse2/` again in your web browser and use the database tool to conduct explorations on Lentivirus genomic and functional protein data.
-
 # 🌍 Access Virus Data via Accession Numbers
 
 This table provides the accession numbers for various virus datasets. If the provided links fail, you can use these accession numbers to retrieve the data directly from the [UniProt database](https://www.uniprot.org).
@@ -151,3 +148,91 @@ This table provides the accession numbers for various virus datasets. If the pro
 | SIV cpz env            | Q1A261              |
 
 Feel free to use these accession numbers to manually search and access genomic and protein data from trusted resources. 🔗
+
+# 🧬 Launch the JBrowse Instance
+Open `http://yourhost/jbrowse2/` again in your web browser and use the database tool to conduct explorations on Lentivirus genomic and functional protein data.
+
+# 🧰 Using the Tool
+## 🧬 6.1 Gene Search and Annotations
+1. After instantiating  the JBrowse instance locally, you should have the following view:
+
+![JBrowse](screenshots/first.png)
+
+2. Here, click on `Linear Genome View`, to open the JBrowse instance.
+3. Under the assembly dropdown, you can select the `Refernce Genomes` for HIV-1, HIV-2, and SIV to visualize the genomic data with annotations.
+
+![JBrowse](screenshots/ref-gen.png)
+
+4. After selecting the reference genome, click `Open` to visualize the genome. 
+5. Click `Open Track Selector` to select the Annotated Genome data for the selected HIV Genome assembly.
+6. Selec the `<HIV-Type>-Annotations` track to visualize the annotated selected HIV type
+
+![JBrowse](screenshots/annotations-hiv1.png)
+
+7. You can search for a specific gene of interest in on the search bar. For example, for the `gag` gene in HIV-1, you can search `gag` and look at its features, as shown below.
+
+![JBrowse](screenshots/search.png)
+![JBrowse](screenshots/features.png)
+
+## 🪢 6.2 Protein Structures
+Follow the instructions, below to visualize selected proteins of interest to study their molecular structures and functional domains.
+1. From the JBrowse instance, go to `Tools` (on the top menu), then `Plugin Store`. 
+
+![JBrowse](screenshots/plugin.png)
+
+2. Locate the `Protein3d` plugin (at the very end) and instal it.
+
+![JBrowse](screenshots/protein-view.png)
+
+
+3. Under the `Select a view to launch`, choose `Protein view` and click `Launch View`.
+
+![JBrowse](screenshots/protein-installed.png)
+
+4. Once the protein view is launched, locate the wrench `🔧` icon to the right of the screen and click it.
+5. Locate the `PDB ID(s)` section on the left, and enter the PDB ID of the selected protein of interst. We provide **Table 1-4** below whih gives a comprehensive list of IDs of proteins we focus on.
+
+![JBrowse](screenshots/pbd-id.png)
+
+6. Once you enter the `PDB ID`, click `Apply`. Once loaded, click on `Assembly1` and then `Apply Action`. From there, click on `3D Representation` 
+
+![JBrowse](screenshots/3d-rep.png)
+
+7. Click `Apply` and wait for the 3D structure to load. 
+
+![JBrowse](screenshots/structure.png)
+
+8. You can rotate and inspect the 3D structure and click on regions to explore the specific molecular bonds and interactions. Hovering the mouse over the structure, you can inspect different domains of the protein.
+
+# Tables 1-4: Tables of PDB IDs of Proteins of Interest
+### Table 1: Table of PDB IDs for Protein Domains of the Gag protein
+
+| Virus Type | PDB | Domain |  Description |
+|:-----------:|:-------:|:---------:|:-------------|
+| HIV-1       | 1HIW    | Matrix | Crystal structures of the trimeric human immunodeficiency virus type 1 matrix protein|
+| HIV-1 Q63R Mutant       | 7JXR   |Matrix| Crystal Structure Human Immunodeficiency Virus-1 Matrix Protein Mutant Q63R Crystal Form 1 |
+| HIV-1 C198S Mutant | 4M0I | Capsid | Crystal Structure of Synthetic HIV-1 Capsid C-Terminal Domain (CTD) |
+| SIV         | 4HTW   | Capsid | SIVmac239 Capsid N-Terminal Domain|
+| HIV-2       | 2E1X   | Nucleocapsid |  NMR Structure of the HIV-2 Nucleocapsid Protein
+| HIV-2       | 2EC7 | Nucleocapsid  | Solution Structure of Human Immunodeficiency Virus Type-2 Nucleocapsid Protein |
+
+### Table 2: Table of PDB IDs for Envelope Glycoprotein gp120
+
+| Virus Type | PDB |  Description |
+|:------------:|:------:|:-------------|
+| HIV-1 Subtype C       | 3TIH   | Crystal Structure of Unliganded HIV-1 Clade C Strain ZM109F.PB4 gp120 Core |
+| HIV-2       | 5CAY   | Envelope Glycoprotein gp120 Core from HIV Type 2 Bound to the First Two Domains of Human Soluble CD4 Receptor |
+| SIV         | 2BF1   | Structure of an Unliganded and Fully-Glycosylated SIV gp120 Envelope Glycoprotein |
+
+### Table 3: Table of PDB IDs for Reverse Transcriptase
+| Virus Type | PDB |  Description |
+|:------------:|:------:|:-------------|
+| HIV-1       | 1HMV   | The Structure of Unliganded Reverse Transcriptase from the Human Immunodeficiency Virus Type 1 |
+| HIV-2       | 1MU2   | Crystal Structure of HIV-2 Reverse Transcriptase                          |
+
+### Table 4: Table of PDB IDs for Tat Protein
+| Virus Type | PDB |  Description |
+|:------------:|:------:|:-------------|
+| HIV-1       | 7T1P   | Solution Structure of 7SK Stem-Loop 1 with HIV-1 Tat Finland Arginine Rich Motif |
+| HIV-1       | 3MIA   | Crystal Structure of HIV-1 Tat Complexed with ATP-Bound Human P-TEFb       |
+| HIV-1       | 1JFW   | Homonuclear and Heteronuclear 1H-13C Nuclear Magnetic Resonance Assignment and Structural Characterization of a HIV-1 Tat Protein |
