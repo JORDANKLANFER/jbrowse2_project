@@ -14,7 +14,7 @@ Make sure you are using a Debian or Ubuntu distribution. Then go ahead and insta
 
 1. Switch to root with: `sudo su -`
 2. Then run: `passwd ubuntu`
-3. It is going to prompt : `Enter new UNIX password:`
+3. It is going to prompt: `Enter new UNIX password:`
 
 Set the password and exit root by typing `exit`. 
 
@@ -44,7 +44,7 @@ node -v # should print `v20.18.0`
 npm -v # should print `10.8.2`
 ```
 ## 2.1.2 Node.js on Linux for AWS
- See https://nodejs.org/en/download/package-manager for more detail. On AWS, you may need to run `sudo apt install unzip` first.
+ See https://nodejs.org/en/download/package-manager for more details. On AWS, you may need to run `sudo apt install unzip` first.
 ```
 # Install fnm (Fast Node Manager)
 curl -fsSL https://fnm.vercel.app/install | bash
@@ -85,7 +85,7 @@ Starting up the web server will provide a localhost page to show that apache2 is
 sudo brew services start httpd
 ```
 
-if you receive error message: "httpd must be run as non-root to start at user login!" Retry without Sudo-ing in
+if you receive the error message: "httpd must be run as non-root to start at user login!" Retry without Sudo-ing in
 ```
 brew services start httpd
 ```
@@ -105,11 +105,11 @@ Open a browser and type the appropriate url into the address bar. You should the
 
 ## 3.3 Apache server folder
 ### MacOS
-Installation on MacOS using brew, the apache2 server holder is likely in in `/opt/homebrew/var/www` (for M1) or `/usr/local/var/www` (for Intel).
+Installation on MacOS using brew, the apache2 server holder is likely in `/opt/homebrew/var/www` (for M1) or `/usr/local/var/www` (for Intel).
 ### Linux (AWS)
 For a normal linux installation, the folder should be `/var/www` or `/var/www/html`.
 
-You can run `brew --prefix` to get the brew install location, and then from there it is in the `var/www` folder. Make sure that one of these folders exist and take note of what the folder is. Run the command below to store it as a command-line variable. You will need to re-run the export if you restart your terminal session!
+You can run `brew --prefix` to get the brew install location, and then from there, it is in the `var/www` folder. Make sure that one of these folders exists and take note of what the folder is. Run the command below to store it as a command-line variable. You will need to re-run the export if you restart your terminal session!
 ```
 # Replace the path with your actual true path!
 export APACHE_ROOT='/path/to/rootdir'
@@ -153,13 +153,13 @@ Feel free to use these accession numbers to manually search and access genomic a
 Open `http://yourhost/jbrowse2/` again in your web browser and use the database tool to conduct explorations on Lentivirus genomic and functional protein data.
 
 # 🧰 Using the Tool
-## 🧬 6.1 Gene Search and Annotations
+## 🔍 6.1 Gene Search and Annotations
 1. After instantiating  the JBrowse instance locally, you should have the following view:
 
 ![JBrowse](screenshots/first.png)
 
 2. Here, click on `Linear Genome View`, to open the JBrowse instance.
-3. Under the assembly dropdown, you can select the `Refernce Genomes` for HIV-1, HIV-2, and SIV to visualize the genomic data with annotations.
+3. Under the assembly dropdown, you can select the `Reference Genomes` for HIV-1, HIV-2, and SIV to visualize the genomic data with annotations.
 
 ![JBrowse](screenshots/ref-gen.png)
 
@@ -174,13 +174,31 @@ Open `http://yourhost/jbrowse2/` again in your web browser and use the database 
 ![JBrowse](screenshots/search.png)
 ![JBrowse](screenshots/features.png)
 
-## 🪢 6.2 Protein Structures
-Follow the instructions, below to visualize selected proteins of interest to study their molecular structures and functional domains.
+
+## 🧬 6.2 Linear Synteny View
+Follow the instructions below to visualize the linear synteny view among selected reference genomes.
+
+1. Under the `Select a view to launch`, choose `Linear Synteny View` and click `Launch View`.
+
+![JBrowse](screenshots/syntenny.png)
+
+2. Select two reference genomes of interest (`HIV1_Reference_Genome`, `HIV2_Reference_Genome`, `SIV_Reference_Genome`). 
+3. On the right, select the Synteny track from existing tracks. **Note that the order of the Reference Genomes and the Synteny track should match. For example, if you select `HIV1_Reference_Genome` as Row 1 and `HIV2_Reference_Genome` as Row 2, the synteny track should be `HIV1-HIV2 Genome Synteny` and not the other way around.**
+4. Click `Launch`.
+5. Click `Open Track Selector` for both genomes and select the appropriate `Annotation Tracks` as per above. 
+
+![JBrowse](screenshots/syn.png)
+
+Inspect and analyze `conversed regions` among the two genomes using the Synteny View.
+
+
+## 🪢 6.3 Protein Structures
+Follow the instructions below to visualize selected proteins of interest to study their molecular structures and functional domains.
 1. From the JBrowse instance, go to `Tools` (on the top menu), then `Plugin Store`. 
 
 ![JBrowse](screenshots/plugin.png)
 
-2. Locate the `Protein3d` plugin (at the very end) and instal it.
+2. Locate the `Protein3d` plugin (at the very end) and install it.
 
 ![JBrowse](screenshots/protein-view.png)
 
@@ -190,7 +208,7 @@ Follow the instructions, below to visualize selected proteins of interest to stu
 ![JBrowse](screenshots/protein-installed.png)
 
 4. Once the protein view is launched, locate the wrench `🔧` icon to the right of the screen and click it.
-5. Locate the `PDB ID(s)` section on the left, and enter the PDB ID of the selected protein of interst. We provide **Table 1-4** below whih gives a comprehensive list of IDs of proteins we focus on.
+5. Locate the `PDB ID(s)` section on the left, and enter the PDB ID of the selected protein of interest. We provide **Table 1-4** below which gives a comprehensive list of IDs of proteins we focus on.
 
 ![JBrowse](screenshots/pbd-id.png)
 
@@ -202,7 +220,7 @@ Follow the instructions, below to visualize selected proteins of interest to stu
 
 ![JBrowse](screenshots/structure.png)
 
-8. You can rotate and inspect the 3D structure and click on regions to explore the specific molecular bonds and interactions. Hovering the mouse over the structure, you can inspect different domains of the protein.
+8. You can rotate and inspect the 3D structure and click on regions to explore specific molecular bonds and interactions. Hovering the mouse over the structure, you can inspect different domains of the protein.
 
 # Tables 1-4: Tables of PDB IDs of Proteins of Interest
 ### Table 1: Table of PDB IDs for Protein Domains of the Gag protein
