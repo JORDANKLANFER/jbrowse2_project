@@ -84,6 +84,12 @@ Starting up the web server will provide a localhost page to show that apache2 is
 ```
 sudo brew services start httpd
 ```
+
+if you receive error message: "httpd must be run as non-root to start at user login!" Retry without Sudo-ing in
+```
+brew services start httpd
+```
+
 ### Linux (AWS)
 AWS will have a public IP address that you need to identify in the aws_instructions.
 ```
