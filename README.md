@@ -132,3 +132,22 @@ bash fetch_and_process_data.sh
 
 # 🧬 Launch the JBrowse Instance
 Open `http://yourhost/jbrowse2/` again in your web browser and use the database tool to conduct explorations on Lentivirus genomic and functional protein data.
+
+# 🌍 Access Virus Data via Accession Numbers
+
+This table provides the accession numbers for various virus datasets. If the provided links fail, you can use these accession numbers to retrieve the data directly from the [UniProt database](https://www.uniprot.org).
+
+| **Virus Label**       | **Accession Number** |
+|------------------------|----------------------|
+| HIV1 M B gag pol       | P12497              |
+| HIV1 M C gag pol       | O12158              |
+| HIV2 A gag pol         | P12451              |
+| HIV2 B gag pol         | P15833              |
+| SIV cpz gag pol        | Q1A267              |
+| HIV1 M B env           | P12490              |
+| HIV1 M C env           | O12164              |
+| HIV2 A env             | P12449              |
+| HIV2 B env             | P15831              |
+| SIV cpz env            | Q1A261              |
+
+Feel free to use these accession numbers to manually search and access genomic and protein data from trusted resources. 🔗
