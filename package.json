@@ -1,0 +1,19 @@
+{
+  "name": "jbrowse2_project",
+  "version": "1.0.0",
+  "description": "A simple JBrowse 2 project with a single HTML file",
+  "scripts": {
+    "start": "http-server .",
+    "test": "echo \"No tests configured\""
+  },
+  "author": "Jordan Klanfer",
+  "license": "ISC",
+  "dependencies": {
+    "@jbrowse/core": "^2.17.0",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
