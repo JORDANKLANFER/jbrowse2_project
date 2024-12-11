@@ -256,7 +256,7 @@ Follow the instructions below to visualize selected proteins of interest to stud
 | HIV-1       | 1JFW   | Homonuclear and Heteronuclear 1H-13C Nuclear Magnetic Resonance Assignment and Structural Characterization of a HIV-1 Tat Protein |
 
 ## ⁑ 6.4 Multiple Sequence Alignment
-We used <a href="https://www.ebi.ac.uk/jdispatcher/msa">Clustal Omega</a> to conduct Multiple Sequence Alignments for our target proteins (namely Gag-pol, Env, and Tat proteins) among HIV-1 Subtypes C and B; HIV-2 Subtypes A and B; SIVcpz isolate MB66. Here, we display the resulting alignment heat maps for each target protein of interest.
+We used <a href="https://www.ebi.ac.uk/jdispatcher/msa">Clustal Omega</a> to conduct Multiple Sequence Alignments for our target proteins (namely Gag-pol, Env, and Tat proteins) among HIV-1 Subtypes C and B; HIV-2 Subtypes A and B; SIVcpz isolate MB66. Here, we display the resulting alignment heat maps for each target protein of interest. Additionally, you can download the files in included_alignment_data and upload them to the MSA View plugin in order to visualize the alignments and their phylogenetic trees. 
 
 ### Figure 1: Alignment Heatmap for Gag-pol Polyprotein
 ![JBrowse](screenshots/gag-pol.jpeg)
