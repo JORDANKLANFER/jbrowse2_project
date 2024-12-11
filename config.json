@@ -351,14 +351,14 @@
     },
     {
       "name": "MsaView",
-      "url": "test.js"
-  }
+      "url": "https://unpkg.com/jbrowse-plugin-msaview/dist/jbrowse-plugin-msaview.umd.production.min.js"
+      }
   
   ],
   "configuration": {},
   "connections": [],
   "defaultSession": {
-    "name": "New Session"
+    "name": "Lentivirus Jbrowse"
   },
   "tracks": [
     {
